@@ -1182,4 +1182,8 @@ const tokenDefinition_t const TOKENS_TOMOCHAIN[NUM_TOKENS_TOMOCHAIN] = {};
 
 const tokenDefinition_t const TOKENS_TOBALABA[NUM_TOKENS_TOBALABA] = {};
 
+const tokenDefinition_t const TOKENS_ARTIS_SIGMA1[NUM_TOKENS_ARTIS_SIGMA1] = {};
+
+const tokenDefinition_t const TOKENS_ARTIS_TAU1[NUM_TOKENS_ARTIS_TAU1] = {};
+
 #endif

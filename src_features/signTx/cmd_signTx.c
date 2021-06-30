@@ -38,14 +38,14 @@ void handleSign(uint8_t p1,
             workBuffer += 4;
             dataLength -= 4;
         }
-        dataPresent = false;
+        tmpContent.txContent.dataPresent = false;
         dataContext.tokenContext.pluginStatus = ETH_PLUGIN_RESULT_UNAVAILABLE;
 
         // EIP 2718: TransactionType might be present before the TransactionPayload.
         uint8_t txType = *workBuffer;
         if (txType >= MIN_TX_TYPE && txType <= MAX_TX_TYPE) {
             // Enumerate through all supported txTypes here...
-            if (txType == EIP2930) {
+            if (txType == EIP2930 || txType == EIP1559) {
                 txContext.txType = txType;
                 workBuffer++;
                 dataLength--;

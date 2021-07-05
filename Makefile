@@ -30,8 +30,8 @@ APP_LOAD_PARAMS += --path "1517992542'/1101353413'"
 
 APPVERSION_M=1
 APPVERSION_N=8
-APPVERSION_P=5
-APPVERSION=$(APPVERSION_M).$(APPVERSION_N).$(APPVERSION_P)
+APPVERSION_P=6
+APPVERSION=$(APPVERSION_M).$(APPVERSION_N).$(APPVERSION_P)-rc2
 APP_LOAD_FLAGS= --appFlags 0x240 --dep Ethereum:$(APPVERSION)
 
 ifeq ($(CHAIN),)
@@ -200,6 +200,10 @@ else ifeq ($(CHAIN),theta)
 APP_LOAD_PARAMS += --path "44'/500'" --path "44'/60'"
 DEFINES += CHAINID_UPCASE=\"THETA\" CHAINID_COINNAME=\"THETA\" CHAIN_KIND=CHAIN_KIND_THETA CHAIN_ID=500
 APPNAME = "Theta"
+else ifeq ($(CHAIN),bsc)
+APP_LOAD_PARAMS += --path "44'/60'"
+DEFINES += CHAINID_UPCASE=\"BSC\" CHAINID_COINNAME=\"BNB\" CHAIN_KIND=CHAIN_KIND_BSC CHAIN_ID=56
+APPNAME = "Binance Smart Chain"
 else
 ifeq ($(filter clean,$(MAKECMDGOALS)),)
 $(error Unsupported CHAIN - use ethereum, ropsten, ethereum_classic, expanse, poa, artis_sigma1, artis_tau1, rsk, rsk_testnet, ubiq, wanchain, kusd, musicoin, pirl, akroma, atheios, callisto, ethersocial, ellaism, ether1, ethergem, gochain, mix, reosc, hpb, tomochain, tobalaba, dexon, volta, ewc, webchain, thundercore, flare, flare_coston, theta)
@@ -366,4 +370,4 @@ include $(BOLOS_SDK)/Makefile.rules
 dep/%.d: %.c Makefile
 
 listvariants:
-	@echo VARIANTS CHAIN ethereum ropsten ethereum_classic expanse poa rsk rsk_testnet ubiq wanchain pirl akroma atheios callisto ethersocial ether1 gochain musicoin ethergem mix ellaism reosc hpb tomochain dexon volta ewc thundercore flare flare_coston theta
+	@echo VARIANTS CHAIN ethereum ropsten ethereum_classic expanse poa rsk rsk_testnet ubiq wanchain pirl akroma atheios callisto ethersocial ether1 gochain musicoin ethergem mix ellaism reosc hpb tomochain dexon volta ewc thundercore flare flare_coston theta bsc
